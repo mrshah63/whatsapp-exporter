@@ -1,0 +1,549 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WA Exporter | Build Stronger Communities</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+:root{
+    --primary:#25D366;
+    --bg:#050816;
+    --card:#111827;
+    --text:#ffffff;
+    --muted:#c8d1e1;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at 15% 20%,rgba(37,211,102,.20),transparent 30%),
+    radial-gradient(circle at 85% 25%,rgba(0,119,255,.18),transparent 30%),
+    radial-gradient(circle at 50% 90%,rgba(130,80,255,.18),transparent 35%);
+    animation:aurora 12s ease-in-out infinite alternate;
+    z-index:-1;
+}
+
+@keyframes aurora{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.15);
+    }
+}
+
+.container{
+    width:min(1200px,90%);
+    margin:auto;
+}
+
+nav{
+    padding:28px 0;
+}
+
+.nav-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:1.8rem;
+    font-weight:800;
+    color:var(--primary);
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 28px;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:var(--primary);
+    color:#000;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 40px rgba(37,211,102,.35);
+}
+
+.hero{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:80px;
+    align-items:center;
+}
+
+.hero-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    padding:10px 18px;
+    border-radius:999px;
+    background:rgba(37,211,102,.08);
+    border:1px solid rgba(37,211,102,.15);
+    color:var(--primary);
+    font-size:.95rem;
+    font-weight:600;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:5rem;
+    line-height:1;
+    font-weight:900;
+    margin-bottom:24px;
+}
+
+.gradient-text{
+    background:linear-gradient(
+        90deg,
+        #25D366,
+        #40c9ff,
+        #9f5cff
+    );
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    color:var(--muted);
+    font-size:1.15rem;
+    line-height:1.9;
+    max-width:650px;
+    margin-bottom:35px;
+}
+
+.platforms{
+    display:flex;
+    gap:20px;
+    margin-top:30px;
+    color:#bfc8d9;
+}
+
+.platforms span{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.hero-card{
+    backdrop-filter:blur(25px);
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:32px;
+    padding:35px;
+    box-shadow:0 25px 80px rgba(0,0,0,.45);
+}
+
+.mockup{
+    background:#0f172a;
+    border-radius:24px;
+    overflow:hidden;
+}
+
+.mockup-header{
+    padding:16px;
+    display:flex;
+    gap:8px;
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+}
+
+.dot:nth-child(1){background:#ff5f57;}
+.dot:nth-child(2){background:#febc2e;}
+.dot:nth-child(3){background:#28c840;}
+
+.mockup-body{
+    padding:30px;
+}
+
+.group{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:#1f2937;
+    padding:16px;
+    border-radius:14px;
+    margin-bottom:12px;
+    transition:.3s;
+}
+
+.group:hover{
+    transform:translateX(6px);
+}
+
+.group i{
+    color:var(--primary);
+    width:20px;
+}
+
+.features{
+    padding:120px 0;
+}
+
+.section-title{
+    text-align:center;
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.section-subtitle{
+    text-align:center;
+    color:var(--muted);
+    max-width:700px;
+    margin:auto;
+    margin-bottom:70px;
+}
+
+.features-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.feature{
+    backdrop-filter:blur(20px);
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    padding:35px;
+    border-radius:24px;
+    transition:.35s;
+}
+
+.feature:hover{
+    transform:translateY(-10px);
+}
+
+.feature-icon{
+    width:60px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:16px;
+    background:rgba(37,211,102,.1);
+    color:var(--primary);
+    font-size:1.4rem;
+    margin-bottom:20px;
+}
+
+.feature h3{
+    margin-bottom:12px;
+}
+
+.feature p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.cta{
+    padding:120px 0;
+}
+
+.cta-box{
+    text-align:center;
+    padding:90px 40px;
+    border-radius:40px;
+    backdrop-filter:blur(25px);
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.cta-box h2{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.cta-box p{
+    color:var(--muted);
+    max-width:700px;
+    margin:auto;
+    margin-bottom:35px;
+    line-height:1.8;
+}
+
+footer{
+    padding:50px;
+    text-align:center;
+    color:#8a94a8;
+}
+
+@media(max-width:950px){
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:3.4rem;
+    }
+
+    .platforms{
+        flex-wrap:wrap;
+    }
+
+    .cta-box h2{
+        font-size:2.2rem;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="container nav-content">
+        <div class="logo">
+            <i class="fa-brands fa-whatsapp"></i>
+            WA Exporter
+        </div>
+
+        <a href="#" class="btn btn-primary">
+            <i class="fa-solid fa-download"></i>
+            Download
+        </a>
+    </div>
+</nav>
+
+<section class="hero">
+
+    <div class="container hero-grid">
+
+        <div>
+
+            <div class="hero-tag">
+                <i class="fa-solid fa-heart"></i>
+                We believe everyone deserves a community when they want to help.
+            </div>
+
+            <h1>
+                Turn WhatsApp Groups
+                <span class="gradient-text">
+                    Into Communities.
+                </span>
+            </h1>
+
+            <p>
+                Export WhatsApp group participants in seconds. Organize contacts,
+                connect supporters, manage volunteers, and grow stronger
+                communities with a fast and secure desktop application.
+            </p>
+
+            <a href="#" class="btn btn-primary">
+                <i class="fa-solid fa-download"></i>
+                Download WA Exporter
+            </a>
+
+            <div class="platforms">
+                <span>
+                    <i class="fa-brands fa-windows"></i>
+                    Windows
+                </span>
+
+                <span>
+                    <i class="fa-brands fa-apple"></i>
+                    macOS
+                </span>
+
+                <span>
+                    <i class="fa-brands fa-linux"></i>
+                    Linux
+                </span>
+            </div>
+
+        </div>
+
+        <div class="hero-card">
+
+            <div class="mockup">
+
+                <div class="mockup-header">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+
+                <div class="mockup-body">
+
+                    <div class="group">
+                        <i class="fa-solid fa-users"></i>
+                        Volunteers Community
+                    </div>
+
+                    <div class="group">
+                        <i class="fa-solid fa-earth-americas"></i>
+                        NGO Support Network
+                    </div>
+
+                    <div class="group">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        Students Community
+                    </div>
+
+                    <div class="group">
+                        <i class="fa-solid fa-briefcase"></i>
+                        Startup Builders
+                    </div>
+
+                    <div class="group">
+                        <i class="fa-solid fa-file-export"></i>
+                        Export to CSV & TXT
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="features">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Everything You Need
+        </h2>
+
+        <p class="section-subtitle">
+            Built for organizers, educators, volunteers, businesses, and anyone
+            bringing people together around a common purpose.
+        </p>
+
+        <div class="features-grid">
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <h3>Instant Export</h3>
+                <p>Export WhatsApp group participants in seconds.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-desktop"></i>
+                </div>
+                <h3>Cross Platform</h3>
+                <p>Available on Windows, macOS, and Linux.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3>Local Processing</h3>
+                <p>Your data stays on your device under your control.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-file-csv"></i>
+                </div>
+                <h3>CSV & TXT Export</h3>
+                <p>Export contacts in formats you already use.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+                <h3>Lightweight</h3>
+                <p>Fast startup and minimal system resource usage.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-people-group"></i>
+                </div>
+                <h3>Community Focused</h3>
+                <p>Built to help people connect, organize, and create impact.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="cta">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <h2>
+                Build Stronger Communities
+            </h2>
+
+            <p>
+                Export contacts, organize members, and connect people who want
+                to make a difference. Start building meaningful relationships
+                with WA Exporter today.
+            </p>
+
+            <a href="#" class="btn btn-primary">
+                <i class="fa-solid fa-download"></i>
+                Get WA Exporter
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 WA Exporter. All Rights Reserved.
+</footer>
+
+</body>
+</html>
+```
